@@ -2,7 +2,7 @@
   "name": "skyhelper-website",
   "version": "1.0.0",
   "description": "website for the bot SkyHelper",
-  "main": "src/index.js",
+  "main": "dist/app.js",
   "scripts": {
     "build": "tsc && npm run copy-files",
     "copy-files": "rsync -av --exclude='*.ts' src/ dist/",
