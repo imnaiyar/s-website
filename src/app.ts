@@ -30,9 +30,14 @@ app.use(bodyParser.json())
     // getting bot stats from database
     .use(async (_req, res, next) => {
         try {
-            const response = await fetch("http://localhost:8080/stats");
+            const response = await fetch("http://localhost:8080/stats").catch(
+                err => {
+                    console.log(err);
+                    return null;
+                }
+            );
             let stats = null;
-            if (response.ok) stats = await response.json();
+            if (response && response.ok) stats = await response.json();
             res.locals.stats = stats
                 ? stats
                 : {
