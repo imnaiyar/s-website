@@ -124,6 +124,4 @@ app.post("/submit", authenticateToken, async (req, res) => {
         console.error(err.stack);
         res.status(500).render("500");
     })
-    .listen(config.PORT, () => {
-        console.log(`Server started running on port ${config.PORT}`);
-    });
+module.exports = app

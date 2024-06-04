@@ -4,7 +4,7 @@
   "description": "website for the bot SkyHelper",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsc && npm run copy-files",
+    "build": "tsc",
     "copy-files": "rsync -av --exclude='*.ts' src/ dist/",
     "start": "node dist/app.js"
   },
