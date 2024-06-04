@@ -1,0 +1,39 @@
+{
+  "name": "skyhelper-website",
+  "version": "1.0.0",
+  "description": "website for the bot SkyHelper",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc && npm run copy-files",
+    "copy-files": "rsync -av --exclude='*.ts' src/ dist/",
+    "start": "node dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imnaiyar/skyhelper.git"
+  },
+  "keywords": [
+    "SkyHelper",
+    "SkyCoTL",
+    "BOT"
+  ],
+  "author": "Naiyar Imam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imnaiyar/skyhelper/issues"
+  },
+  "homepage": "https://github.com/imnaiyar/skyhelper#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "typescript": "^5.4.5"
+  }
+}
