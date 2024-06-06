@@ -124,5 +124,5 @@ app.post("/submit", authenticateToken, async (req, res) => {
     .use((err: any, _req: Request, res: Response, _next: any) => {
         console.error(err.stack);
         res.status(500).render("500");
-    });
+    })
 module.exports = app;
