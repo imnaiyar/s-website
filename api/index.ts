@@ -10,7 +10,7 @@ import bodyParser from "body-parser";
 const webhookLogger = process.env.CONTACT_US
     ? new WebhookClient({ url: process.env.CONTACT_US })
     : undefined;
-const dir = path.join(__dirname, "views");
+const dir = path.resolve() + "/views";
 const files = fs.readdirSync(dir);
 const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     const token = req.header("Authorization")?.split(" ")[1];
@@ -20,17 +20,18 @@ const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
         res.status(401).send("Unauthorized: Invalid Authorization Token");
     }
 };
+
 app.use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: true }))
     .engine("html", require("ejs").renderFile) // Set the engine to html (for ejs template)
-    .set("views", path.join(__dirname, "views"))
+    .set("views", path.resolve() + "/views")
     .set("view engine", "ejs")
-    .use("/", express.static(path.join(__dirname, "views")))
+    .use("/", express.static(path.resolve() + "/views"))
 
     // getting bot stats from database
     .use(async (_req, res, next) => {
         try {
-            const response = await fetch("http://localhost:8080/stats").catch(
+            const response = await fetch(config.API_ENDPOINT + "/stats").catch(
                 err => {
                     console.log(err);
                     return null;
@@ -123,5 +124,5 @@ app.post("/submit", authenticateToken, async (req, res) => {
     .use((err: any, _req: Request, res: Response, _next: any) => {
         console.error(err.stack);
         res.status(500).render("500");
-    })
-module.exports = app
+    });
+module.exports = app;
