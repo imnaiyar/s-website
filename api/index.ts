@@ -22,7 +22,9 @@ const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     } else {
         res.status(401).send("Unauthorized: Invalid Authorization Token");
     }
-};
+}
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Other Middleware and Route Definitions
 app.engine("html", require("ejs").renderFile)
