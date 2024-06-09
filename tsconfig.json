@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "Node16",
+    "module": "NodeNext",
     "allowSyntheticDefaultImports": true,
     "rootDir": "api",
     "outDir": "dist",
@@ -10,7 +10,7 @@
     "alwaysStrict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "moduleResolution": "Node16",
+    "moduleResolution": "NodeNext",
     "skipLibCheck": true
   },
   "include": ["api/**/*"],
