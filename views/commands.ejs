@@ -42,7 +42,12 @@
               <div class="value__accordion-item">
                 <header class="value__accordion-header">
                   <h3 class="value__accordion-title">/<%= cmd.name %></h3>
-                  <p class="cmd__desc">- <%= cmd.description %> </p>
+                  <p class="cmd__desc">- <% if (cmd.type === 2 || cmd.type === 3) {  %> 
+                    <span class="code-block"><%= cmd.type === 2 ? "User App Context" : "Message App Context" %> </span>
+                  <% } %>
+                  <% if (cmd.type === 1) { %>
+                    <%= cmd.description %>
+                   <% } %> </p>
                   <div class="value__accordion-arrow">
                     <i class="bx bxs-down-arrow"></i>
                   </div>
