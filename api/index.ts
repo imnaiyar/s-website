@@ -71,7 +71,7 @@ app.get("/vote", (_req, res) => {
 
 app.get("/invite", (_req, res) => {
     res.redirect(
-        "https://discord.com/api/oauth2/authorize?client_id=1121541967730450574&permissions=412854114496&scope=bot+applications.commands"
+        "https://discord.com/oauth2/authorize?client_id=1121541967730450574"
     );
 });
 
