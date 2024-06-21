@@ -262,9 +262,7 @@ body.dark-theme {
   justify-content: space-between;
   align-items: center;
 }
-.nav__logo-text {
-  display: none;
-}
+
 .nav__logo {
   color: #fff;
   display: inline-flex;
@@ -287,14 +285,7 @@ body.dark-theme {
 .nav__com {
   display: inline-flex;
 }
-.nav__logo-text.skyhelper {
-  top: 50px;
-  left: 50px;
-  width: 100px;
-  height: 45px;
-  padding-left: 3px;
-  padding-top: 4px;
-}
+
 
 @media screen and (max-width: 1023px) {
   .nav__menu {
@@ -1198,13 +1189,7 @@ copyBtn:focus:end {
   .nav__menu {
     width: 342px;
   }
-  .nav__logo-text.skyhelper {
-    width: 120px;
-    height: 40px;
-  }
-  .com-icon {
-    padding-right: 0.75rem;
-  }
+  
   .topgg__container .section__title {
     padding-left: 10%;
   }
@@ -1244,16 +1229,11 @@ copyBtn:focus:end {
 }
 
 @media screen and (min-width: 767px) {
-  .com-icon {
-    padding-right: 1rem;
-  }
+  
   .nav__com {
     padding-right: 1rem;
   }
-  .nav__logo-text.skyhelper {
-    width: 150px;
-    height: 45px;
-  }
+  
   .home__container {
     grid-template-columns: repeat(2, 1fr);
     padding-top: 2rem;
@@ -1303,10 +1283,7 @@ copyBtn:focus:end {
     height: 50px;
   }
 
-  .nav__logo-text.skyhelper {
-    width: 200px;
-    height: 60px;
-  }
+  
   .copyBtn:focus {
     height: 60px;
     width: 140px;

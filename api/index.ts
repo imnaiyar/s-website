@@ -6,7 +6,7 @@ import config from "./config";
 import { API, Routes, APIEmbed } from "@discordjs/core";
 import { REST } from "@discordjs/rest";
 import { parseWebhookURL } from "./utils/parseWebhookURL";
-
+import { inject } from "@vercel/analytics";
 const rest = new REST().setToken(process.env.TOKEN!);
 const api = new API(rest);
 const webhook = parseWebhookURL(process.env.CONTACT_US!);
@@ -22,7 +22,7 @@ const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     } else {
         res.status(401).send("Unauthorized: Invalid Authorization Token");
     }
-}
+};
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -36,6 +36,7 @@ app.engine("html", require("ejs").renderFile)
 app.use((req, res, next) => {
     res.locals.filename = req.originalUrl;
     res.locals.authToken = process.env.AUTH_TOKEN;
+    res.locals.injectAnalytics = inject();
     next();
 });
 
@@ -86,7 +87,7 @@ files.forEach(file => {
 // Handling 'contact-us' form submission
 app.post("/submit", authenticateToken, async (req, res) => {
     const body = req.body;
-    
+
     const { name, email, message, discordUsername, reason } = body;
 
     try {
