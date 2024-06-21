@@ -5,6 +5,7 @@ import fs from "node:fs";
 import config from "./config";
 import { API, Routes, APIEmbed } from "@discordjs/core";
 import { REST } from "@discordjs/rest";
+import { parseWebhookURL } from "./utils/parseWebhookURL";
 const rest = new REST().setToken(process.env.TOKEN!);
 const api = new API(rest);
 const webhook = parseWebhookURL(process.env.CONTACT_US!);
