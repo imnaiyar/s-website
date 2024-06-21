@@ -5,8 +5,6 @@ import fs from "node:fs";
 import config from "./config";
 import { API, Routes, APIEmbed } from "@discordjs/core";
 import { REST } from "@discordjs/rest";
-import { parseWebhookURL } from "./utils/parseWebhookURL";
-import { inject } from "@vercel/analytics";
 const rest = new REST().setToken(process.env.TOKEN!);
 const api = new API(rest);
 const webhook = parseWebhookURL(process.env.CONTACT_US!);
@@ -36,7 +34,6 @@ app.engine("html", require("ejs").renderFile)
 app.use((req, res, next) => {
     res.locals.filename = req.originalUrl;
     res.locals.authToken = process.env.AUTH_TOKEN;
-    res.locals.inject = inject;
     next();
 });
 
