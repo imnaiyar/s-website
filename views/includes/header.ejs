@@ -1,10 +1,9 @@
 <script type="text/javascript">
-  console.log(inject())
-   if (typeof inject !== 'undefined') { 
+  <% if (typeof inject !== 'undefined') { %>
       inject();
-      console.log(inject())
-   } 
+  <% } %>
 </script>
+%>
 <% if (filename === '/' || filename === '/index') { %>
 <!-- Header for 'index' route -->
 <div class="progress-container progress-bar" id="myBar"></div>
