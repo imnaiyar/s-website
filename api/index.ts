@@ -36,7 +36,7 @@ app.engine("html", require("ejs").renderFile)
 app.use((req, res, next) => {
     res.locals.filename = req.originalUrl;
     res.locals.authToken = process.env.AUTH_TOKEN;
-    res.locals.injectAnalytics = inject();
+    res.locals.inject = inject;
     next();
 });
 
