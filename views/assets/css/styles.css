@@ -567,6 +567,56 @@ a .uil {
 .section-dropdown-sub a .uil {
   font-size: 20px;
 }
+ /* Command search */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-bar {
+  width: 0;
+  opacity: 0;
+  transition: width 0.4s ease, opacity 0.4s ease; /* Smooth transition */
+  padding-right: 30px;
+  margin-bottom: 8px;
+  height: 40px;
+  border: 2px solid var(--dropdown-color);
+  border-radius: 10px;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  visibility: hidden;
+}
+
+.search-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-right: 10px;
+  padding-bottom: 7px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* When hovering over the container, show the search bar */
+.search-container:hover .search-bar,
+.search-container:focus-within .search-bar {
+  width: 30vw; 
+  opacity: 1;
+  visibility: visible; 
+  
+}
+
+
+.search-container:hover .search-bar,
+.search-container:focus-within .search-bar {
+  padding-left: 10px;
+  padding-right: 35px;
+  border: 2px solid var(--first-color-light);
+}
+
+
 
 
 /* Change background header */

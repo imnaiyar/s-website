@@ -37,11 +37,17 @@
                 <b>Optional</b>: <span class="code-block">[]</span>
               </p>
             </div>
+            <div class="search-container">
+              <input id="command-search" type="text" class="search-bar" placeholder="Search Commands..." />
+              <i class='bx bx-search search-icon'></i>
+            </div>
+            
+            <p id="no-results" class="section__decription" style="display: none;">No commands found with that name.</p>
             <div class="value__accordion">
               <% commands.forEach((cmd) => { %>
               <div class="value__accordion-item">
                 <header class="value__accordion-header">
-                  <h3 class="value__accordion-title">/<%= cmd.name %></h3>
+                  <h3 id="<%= cmd.name %>" class="value__accordion-title">/<%= cmd.name %></h3>
                   <p class="cmd__desc">- <% if (cmd.type === 2 || cmd.type === 3) {  %> 
                     <span class="code-block"><%= cmd.type === 2 ? "User App Context" : "Message App Context" %> </span>
                   <% } %>
@@ -98,6 +104,6 @@
     <!--=============== SWIPER JS ===============-->
     <script src="assets/js/swiper-bundle.min.js"></script>
     <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>  
   </body>
 </html>

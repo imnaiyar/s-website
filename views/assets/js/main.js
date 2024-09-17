@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     const valueElements = document.querySelectorAll(".count");
     valueElements.forEach(element => {
         const targetValue = parseInt(element.textContent);
@@ -14,15 +14,15 @@ window.onload = function () {
 };
 
 /* ========== COPY BUTTON ============== */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const copyButtons = document.querySelectorAll(".copyBtn");
 
     copyButtons.forEach((button, index) => {
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function() {
             const codeBlock = document.querySelectorAll(".code-block")[index];
             const codeToCopy = codeBlock.textContent;
 
-            navigator.clipboard.writeText(codeToCopy).catch(function (err) {
+            navigator.clipboard.writeText(codeToCopy).catch(function(err) {
                 console.error("Unable to copy text", err);
             });
         });
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ============ Progress Bar =========== */
-document.addEventListener("scroll", function () {
+document.addEventListener("scroll", function() {
     updateProgressBar();
 });
 
@@ -184,8 +184,12 @@ const sr = ScrollReveal({
 sr.reveal(
     `.home__title, .popular__container, .subscribe__container, .topgg__container`
 );
-sr.reveal(`.footer__container`, { origin: "bottom" });
-sr.reveal(`.footer__info`, { origin: "bottom", delay: 500 });
+
+// Causing issues with commands search, so diable for commands page
+if (window.location.pathname !== "/commands") {
+    sr.reveal(`.footer__container`, { origin: "bottom" });
+    sr.reveal(`.footer__info`, { origin: "bottom", delay: 500 });
+}
 sr.reveal(`.home__description`, { delay: 500 });
 sr.reveal(`.home__search`, { delay: 600 });
 sr.reveal(`.home__value`, { delay: 700 });
@@ -196,9 +200,38 @@ sr.reveal(`.value__content, .form, .toc-content, .times__data`, {
     origin: "right"
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('command-search');
+    const commands = document.querySelectorAll('.value__accordion-item');
+    const noResultsMessage = document.getElementById('no-results');
+
+    // Filter commands based on search input
+    searchInput.addEventListener('keyup', function() {
+        const filter = searchInput.value.toLowerCase();
+        let commandFound = false;
+
+        commands.forEach(command => {
+            const commandName = command.querySelector('.value__accordion-title').textContent.toLowerCase();
+            if (commandName.includes(filter)) {
+                command.style.display = '';
+                commandFound = true;
+            } else {
+                command.style.display = 'none';
+            }
+        });
+
+        // If no commands found, display the message
+        if (!commandFound) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    });
+});
+
 /* =========== Handle Contact Form Submission */
-$(document).ready(function () {
-    $("#contactForm").submit(function (event) {
+$(document).ready(function() {
+    $("#contactForm").submit(function(event) {
         event.preventDefault();
         const formData = $(this).serialize();
         const token = window.authToken;
@@ -206,10 +239,10 @@ $(document).ready(function () {
             type: "POST",
             url: "/submit",
             data: formData,
-            beforeSend: function (xhr) {
+            beforeSend: function(xhr) {
                 xhr.setRequestHeader("Authorization", `Bearer ${token}`);
             },
-            success: function (response) {
+            success: function(response) {
                 $("#contactForm")[0].reset();
                 Swal.fire({
                     icon: "success",
@@ -220,7 +253,7 @@ $(document).ready(function () {
                 });
                 $("#contactForm")[0].reset();
             },
-            error: function (error) {
+            error: function(error) {
                 // Show an error message using SweetAlert2
                 console.log(error);
                 $("#contactForm")[0].reset();
