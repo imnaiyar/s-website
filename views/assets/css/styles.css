@@ -1414,6 +1414,13 @@ copyBtn:focus:end {
     margin-left: 1rem;
     margin-right: 1rem;
   }
+.search-container:hover .search-bar,
+.search-container:focus-within .search-bar {
+  width: 80vw; 
+  opacity: 1;
+  visibility: visible; 
+  
+}
   .section {
     padding: 3.5rem 0 1rem;
   }
@@ -1477,15 +1484,21 @@ copyBtn:focus:end {
 /* Add this media query for mobile devices */
 @media screen and (max-width: 1023px) {
   .nav__button {
-    font-size: 0.5rem; /* Adjust the font size accordingly */
-    /* Add any other styles you want for the smaller button on mobile */
+    font-size: 0.5rem; 
   }
 }
 @media screen and (min-width: 576px) {
   .nav__menu {
     width: 342px;
   }
+
+ .search-container:hover .search-bar,
+ .search-container:focus-within .search-bar {
+  width: 70vw; 
+  opacity: 1;
+  visibility: visible; 
   
+}
   .topgg__container .section__title {
     padding-left: 10%;
   }
