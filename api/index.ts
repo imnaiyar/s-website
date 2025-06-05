@@ -48,7 +48,7 @@ app.get("/", async (_req, res) => {
         if (response && response.ok) stats = await response.json();
         res.locals.stats = stats
             ? stats
-            : { totalServers: 1, totalMembers: 1, commands: 1 };
+            : { totalServers: 1, totalMembers: 1, commands: 1, totalUserInstalls: 1};
     } catch (err) {
         console.error(err);
         res.locals.stats = null;

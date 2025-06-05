@@ -1,15 +1,25 @@
-window.onload = function() {
+/* ========== Number counting ========= */
+window.onload = function () {
     const valueElements = document.querySelectorAll(".count");
     valueElements.forEach(element => {
         const targetValue = parseInt(element.textContent);
         let currentValue = 0;
+        const duration = 2500; // total duration it should take to finish counting (2.5s, cos i feel like thats the appropriate durarion)
+        const frameRate = 60; // approximate number of updates per second
+
+        const totalSteps = Math.min(targetValue, frameRate * (duration / 1000));
+        const increment = targetValue / totalSteps;
+        const stepTime = duration / totalSteps;
+
         const intervalId = setInterval(() => {
-            currentValue++;
-            element.textContent = currentValue;
+            currentValue += increment;
             if (currentValue >= targetValue) {
+                element.textContent = targetValue;
                 clearInterval(intervalId);
+            } else {
+                element.textContent = Math.floor(currentValue);
             }
-        }, 20); // Adjust the interval for desired speed
+        }, stepTime);
     });
 };
 

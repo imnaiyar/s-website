@@ -78,17 +78,17 @@
               </div>
               <div>
                 <h1 class="home__value-number">
+                  <strong class="count"><%= stats.totalUserInstalls || 1 %></strong>
+                  <span>+</span>
+                </h1>
+                <span class="home__value-description"> User Installs </span>
+              </div>
+              <div>
+                <h1 class="home__value-number">
                   <strong class="count"><%= Math.floor(stats.totalMembers / 1000) %></strong><strong>K</strong>
                   <span>+</span>
                 </h1>
                 <span class="home__value-description"> Users </span>
-              </div>
-              <div>
-                <h1 class="home__value-number">
-                  <strong class="count"> <%=  stats.commands  %></strong>
-                  <span>+</span>
-                </h1>
-                <span class="home__value-description"> Commands </span>
               </div>
             </div>
           </div>
